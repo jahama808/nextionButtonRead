@@ -30,23 +30,4 @@ while True:
 
 
 
-	# if(len(incoming)>4):
-	# 	print('got it')
-	# 	if(incoming.index('x00\\x02')>0):
-	# 		print('right button')
-	# 	elif(incoming.index('x00\\x01')>0):
-	# 		print('left button')
-
-
-
-
-	# try:
-	# 	if(incoming.index('\x02\x01',0)>0):
-	# 		print('right button')
-	# 	elif (incoming.index('\x01\x01',0)>0):
-	# 		print('left button')
-	# except:
-	# 	print('no entry')
-	
-
 	

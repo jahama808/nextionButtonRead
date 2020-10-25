@@ -12,22 +12,30 @@ import time
 port=Serial(port='/dev/ttyAMA0',baudrate=9600, timeout=1.0)
 
 
-eof = "\xff\xff\xff"
-jay = "page 0"+eof
-port.write(str.encode(jay))
-
-print ('entering loop')
+eof = b'\xff\xff\xff'
 
 
 while True:
-	rcv=port.readline()
-	incoming = str(repr(rcv))
-	print(incoming[9:11])
-	if(incoming[9:11] == '01'):
-		print('left button')
-	elif(incoming[9:11] == '02'):
-		print('right button')
+	port.write(b'page 8'+eof)
 
+	print ('entering loop')
+
+
+
+	pushButton = False
+	while pushButton == False:
+		rcv=port.readline()
+		incoming = str(repr(rcv))
+		# print(incoming[9:11])
+		if(incoming[9:11] == '03'):
+			port.write(b'page 1'+eof)
+			pushButton = True
+		elif(incoming[9:11] == '04'):
+			port.write(b'page 2'+eof)
+			pushButton = True
+
+	print('done')
+	time.sleep(10)
 
 
 	
